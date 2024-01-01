@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Admission Prediction</title>
+
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Child Learn Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <!-- <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script> -->
+	
+	<!-- css files -->
+    <link href="static/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="static/style.css" rel='stylesheet' type='text/css' />
+	<link href="static/css_slider.css" type="text/css" rel="stylesheet" media="all">
+    <link href="static/font-awesome.min.css" rel="stylesheet">
+	<!-- //css files -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css', v='1.0') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_slider.css', v='1.0') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css', v='1.0') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome.css', v='1.0') }}">
+
+	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <!-- <dotlottie-player src="https://lottie.host/8ed7c190-0f7c-4ed8-95ec-b782179b524c/Im5sl195iz.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/css_slider.css') }}"> -->
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}"> -->
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!-- //google fonts -->
+	<!-- <script src="https://lottiefiles.com/v2/latest/dotlottie-player.js"></script> -->
+
+</head>
+<body>
+
+<!-- header -->
+<header>
+	
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="index.html"><img src="images/s2.png" alt=""> Child Learn </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="active"><a href="index.html">Home</a></li>
+				<li class=""><a href="#services">Features</a></li>
+				<li class=""><a href="#about">About</a></li>
+				
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+<!-- banner -->
+<div class="banner" id="home">
+	
+	
+	<div class="layer">
+		
+		<div class="container">
+			<div class="row"> 
+				<div class="col-lg-7 banner-text-w3pvt">
+					<!-- banner slider-->
+					<!-- <img src="images/banner.jpg" alt=""> -->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<input type="radio" name="slides" id="slides_2" />
+						<input type="radio" name="slides" id="slides_3" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<dotlottie-player
+											src="https://lottie.host/8ed7c190-0f7c-4ed8-95ec-b782179b524c/Im5sl195iz.json"
+											background="transparent"
+											speed="1"
+											style="width: 300px; height: 300px;"
+											loop
+											autoplay
+										></dotlottie-player>
+										
+										<h1 id="hiddenText" style="display: none; color: white;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{ prediction_text }}</h1>
+										<!-- <iframe src="https://lottie.host/?file=8ed7c190-0f7c-4ed8-95ec-b782179b524c/Im5sl195iz.json"></iframe> -->
+										<!-- <dotlottie-player src="https://lottie.host/8ed7c190-0f7c-4ed8-95ec-b782179b524c/Im5sl195iz.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player> -->
+										
+										<script>
+											// Add a time delay (in milliseconds) before showing the h1 element
+											const delay = 5000; // 5000 milliseconds (5 seconds)
+											
+											setTimeout(() => {
+												const dotlottiePlayer = document.querySelector('dotlottie-player');
+												const hiddenText = document.getElementById('hiddenText');
+												
+												// Hide the dotlottie-player
+												dotlottiePlayer.style.display = 'none';
+												
+												// Show the h1 element
+												hiddenText.style.display = 'block';
+											}, delay);
+										</script>
+										
+										
+										
+									</div>
+								</div>
+							</li>
+							
+						
+					</div>
+					<!-- //banner slider-->
+				</div>
+				<div class="col-lg-5 col-md-8 px-lg-3 px-0">
+					<div class="banner-form-w3 ml-lg-5">
+						<div class="padding">
+							<!-- banner form -->
+							<form action="{{ url_for('predict')}}" method="post">
+								<h5 class="mb-3" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Predict Chance of Admit</h5>
+								<div class="form-style-w3ls">
+									
+										<input type="text" name="GRE_Score" id="" placeholder="GRE Score">
+										<input type="text" name="toefl" id="" placeholder="TOEFL Score">
+										<input type="text" name="university_ranking" placeholder="University Ranking">
+										<input type="text" name="sop" id="" placeholder="SOP">
+										<input type="text" name="lor" id="" placeholder="LOR">
+										<input type="text" name="cgpa" id="" placeholder="CGPA">
+										<input type="text" name="research" id="" placeholder="Research">
+        
+        								<button  type="submit">Predict</button>
+									
+									
+									
+								</div>
+							</form>
+							
+							
+							
+						</div>
+					</div><br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+<!-- services -->
+<section class="services py-5" id="services">
+	<div class="container">
+		<h3 class="heading mb-5">Model Features</h3>
+		<div class="row ml-sm-5">
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<img src="static/images/s1.png" alt="">
+						</div>
+						<div class="our-services-text">
+							<h4>Accuracy</h4>
+							<p>This ML Project provide 78% of accuracy.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<img src="static/images/s2.png" alt="">
+						</div>
+						<div class="our-services-text">
+							<h4>Real Time Updates</h4>
+							<p>Receive feeadback on their % of admission chance</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<img src="static/images/s3.png" alt="">
+						</div>
+						<div class="our-services-text">
+							<h4>UI interface</h4>
+							<p>Easy to use interface and understand output</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- positioned image -->
+		<div class="position-image">
+			<img src="static/images/services.png" alt="" class="img-fluid">
+		</div>
+		<!-- //positioned image -->
+	</div>
+</section>
+<!-- //services -->
+
+<br><br><br><br>
+<!-- testimonials -->
+<section class="testimonials" id="about" style="background-image: url(../static/images/testimonials.jpg);
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+-ms-background-size: cover;
+background-size: cover;">
+	<div class="layer py-lg-5">
+		<div class="container py-5">
+			<h3 class="heading mb-5" style="font-size: 80px;text-decoration: underline">About US</h3>
+			<div class="text-center">
+				<div class="row">
+					
+						<div class="testi-info-text">
+							<h1 style="color: rgb(254, 254, 254);font-size: 60PX;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-shadow: 2px 2px 5px red">Unlock Your Admission Potential Today</h1>
+							
+							<p style="font-size: 30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Welcome to the College Admission Predictor – your go-to platform for unlocking the secrets to a successful college application!
+							</p>	
+							<h3 style="font-size: 40px;color: rgb(218, 222, 225);text-decoration: underline;text-shadow: 2px 2px 5px red">Who We Are</h3>
+							<p style="font-size: 30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">We are a team of dedicated data scientists and education enthusiasts committed to simplifying the college admission journey.</p>					
+							<h3 style="font-size: 40px;color: rgb(218, 222, 225);text-decoration: underline;text-shadow: 2px 2px 5px red">Our Mission</h3>
+							<p style="font-size: 30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Empower every student with accurate, transparent, and user-friendly admission predictions, making informed decisions accessible to all.
+							</p>		
+							<hr style="border: 1px solid rgb(77, 79, 128);">
+							<h3 style="font-size: 30px;color: rgb(218, 222, 225);font-family: Verdana, Geneva, Tahoma, sans-serif;">Choose the College Admission Predictor for a future filled with clarity and success!</h3>
+							
+						</div>
+						
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //testimonials -->
+
+
+<!-- footer -->
+<footer>
+	<div class="footer-layer py-sm-5 pt-5 pb-3">
+		<div class="container py-md-3">
+			<div class="footer-grid_section text-center">
+				<div class="footer-title mb-3">
+					<a href="#"><img src="images/s2.png" alt=""> Child Learn</a>
+				</div>
+				
+				<ul class="social_section_1info">
+					<li class="mb-2 facebook"><a href="#"><span class="fa fa-facebook"></span></a></li>
+					<li class="mb-2 twitter"><a href="#"><span class="fa fa-twitter"></span></a></li>
+					<li class="google"><a href="#"><span class="fa fa-google-plus"></span></a></li>
+					<li class="linkedin"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+					<li class="pinterest"><a href="#"><span class="fa fa-pinterest"></span></a></li>
+					<li class="vimeo"><a href="#"><span class="fa fa-vimeo"></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- //footer -->
+
+
+
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+</body>
+</html>
